@@ -17,7 +17,7 @@ public class DummyData {
     @Autowired
     CodeblogRepository codeblogRepository;
 
-    @PostConstruct //Populando o banco de dados
+    //@PostConstruct //Populando o banco de dados
     public void savePosts(){
 
         List<Post> postList = new ArrayList<>();
