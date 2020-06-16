@@ -29,6 +29,7 @@ public class Post {
 	private LocalDate data;
 	
 	@Lob
+	@NotNull
 	private String texto;
 
 	public long getId() {
