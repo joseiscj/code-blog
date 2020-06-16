@@ -8,9 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.sun.istack.NotNull;
 
 @Entity
 @Table(name="TB_POST")
@@ -19,17 +20,17 @@ public class Post {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@NotNull
+	@NotEmpty(message = "Por favor, insira um título.")
 	private String titulo;
 	
-	@NotNull
+	@NotEmpty(message = "Por favor, insira um autor.")
 	private String autor;
 	
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")
 	private LocalDate data;
 	
+	@NotEmpty(message = "Por favor, insira um texto.")
 	@Lob
-	@NotNull
 	private String texto;
 
 	public long getId() {

@@ -3,6 +3,8 @@ package com.spring.codeblog.controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -44,8 +46,9 @@ public class CodeblogController {
 	}
 	
 	@RequestMapping(value = "/newpost", method = RequestMethod.POST)
-	public String savePost(@Validated Post post, BindingResult result, RedirectAttributes attributes) { //o retorno é uma String que vai redirecionar para a página de posts
+	public String savePost(@Valid Post post, BindingResult result, RedirectAttributes attributes) { //o retorno é uma String que vai redirecionar para a página de posts
 		if (result.hasErrors()) {
+			attributes.addFlashAttribute("message", "Verifique se os campos obrigatórios foram preenchidos!");
 			return "redirect:/newpost";
 		} 
 		post.setData(LocalDate.now());
