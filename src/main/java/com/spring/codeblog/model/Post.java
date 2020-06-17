@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -20,17 +19,17 @@ public class Post {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@NotEmpty(message = "Por favor, insira um título.")
+	@NotBlank
 	private String titulo;
 	
-	@NotEmpty(message = "Por favor, insira um autor.")
+	@NotBlank
 	private String autor;
 	
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")
 	private LocalDate data;
 	
-	@NotEmpty(message = "Por favor, insira um texto.")
 	@Lob
+	@NotBlank
 	private String texto;
 
 	public long getId() {
