@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head>
-    <title>MyCodeBlog</title>
+    <title>Blog Juninho Cruz</title>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <!-- Bootstrap CSS -->
@@ -12,7 +12,7 @@
 
     <header>
         <nav class="navbar navbar-light bg-light">
-            <span class="navbar-brand mb-0 h1" style="font-weight: bold;">MyCodeBlog</span>
+            <span class="navbar-brand mb-0 h1" style="font-weight: bold;">Blog Juninho Cruz</span>
             <a href="/newpost" class="btn btn-primary" role="button">Novo Post</a>
         </nav>
     </header>
@@ -25,15 +25,15 @@
             </ol>
         </nav>
         <div class="card shadow-sm bg-white rounded" style="margin-top: 20px;" th:each="post : ${posts}">
-            <div class="card-body">
+            <a th:href="${(#mvc.url('CC#getPostDetails').arg(0, post.id)).build()}"><div class="card-body">
                 <p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
                     <span th:text="${post.autor}"></span>
                     <span th:text="${post.data}"></span>
                 </p>
-                <a th:href="${(#mvc.url('CC#getPostDetails').arg(0, post.id)).build()}"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${post.titulo}"></span></h4></a>
+                <h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;"><span th:text="${post.titulo}"></span></h4>
                 <p class="card-text"><span th:utext="${#strings.abbreviate(post.texto,400)} "></span></p>
                 <!--<a th:href="${(#mvc.url('CC#getPostDetails').arg(0, post.id)).build()}" class="card-link">Acessar</a>-->
-            </div>
+            </div></a>
         </div>
     </div>
     </section>
